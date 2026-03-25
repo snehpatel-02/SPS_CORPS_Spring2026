@@ -1,0 +1,51 @@
+use_case,primary_sme,risk_level,industry,complexity,justification
+Use AI to predict hospital readmission risk using patient records,AI_Solution_Design,High,Healthcare,Complex,Requires predictive modeling with clinical impact
+Build chatbot using internal hospital SOP documents,Data_Technical_Readiness,Medium,Healthcare,Medium,Requires document ingestion and retrieval setup
+Automate insurance claim approvals using AI,Governance_Risk_Operational,High,Healthcare,Complex,Regulatory and fairness risks in claim decisions
+Analyze patient feedback comments for sentiment,AI_Solution_Design,Low,Healthcare,Simple,Standard NLP classification problem
+Integrate EHR and claims data for analytics,Data_Technical_Readiness,Medium,Healthcare,Complex,Data integration challenge across systems
+Use AI to prioritize emergency room patients,Governance_Risk_Operational,High,Healthcare,Complex,High-risk clinical decision impact
+Forecast patient admission rates,AI_Solution_Design,Low,Healthcare,Medium,Time-series forecasting problem
+Clean and standardize hospital data,Data_Technical_Readiness,Low,Healthcare,Simple,Data preprocessing and quality improvement
+Detect anomalies in patient vitals data,AI_Solution_Design,Medium,Healthcare,Medium,Anomaly detection modeling required
+Use AI to automate medical coding,Governance_Risk_Operational,High,Healthcare,Complex,Compliance and billing accuracy concerns
+Predict loan default risk using financial data,AI_Solution_Design,Medium,Finance,Medium,Classification modeling problem
+Automate loan approvals using AI,Governance_Risk_Operational,High,Finance,Complex,Regulatory and fairness concerns
+Integrate multiple banking databases,Data_Technical_Readiness,Medium,Finance,Complex,Data engineering and integration challenge
+Detect fraudulent transactions,AI_Solution_Design,Medium,Finance,Medium,Fraud detection modeling use case
+Use AI for credit scoring,Governance_Risk_Operational,High,Finance,Complex,Bias and regulatory risk in financial decisions
+Build chatbot for banking support,Data_Technical_Readiness,Medium,Finance,Medium,Requires integration with customer data
+Forecast stock price trends,AI_Solution_Design,High,Finance,Complex,Advanced time-series modeling
+Clean and normalize transaction data,Data_Technical_Readiness,Low,Finance,Simple,Data preprocessing task
+Analyze customer spending behavior,AI_Solution_Design,Low,Finance,Medium,Clustering and segmentation problem
+Monitor employee trading activity,Governance_Risk_Operational,High,Finance,Complex,Compliance and surveillance risks
+Use AI to screen job applicants,Governance_Risk_Operational,High,HR,Medium,Bias and fairness concerns in hiring
+Build resume parsing system,AI_Solution_Design,Low,HR,Simple,NLP extraction problem
+Integrate HR systems for analytics,Data_Technical_Readiness,Medium,HR,Medium,Data integration across HR platforms
+Analyze employee engagement surveys,AI_Solution_Design,Low,HR,Simple,Sentiment analysis problem
+Monitor employee emails for productivity,Governance_Risk_Operational,High,HR,Complex,Privacy and ethical concerns
+Clean employee records database,Data_Technical_Readiness,Low,HR,Simple,Data cleaning task
+Predict employee attrition,AI_Solution_Design,Medium,HR,Medium,Predictive modeling use case
+Use AI to recommend training programs,AI_Solution_Design,Low,HR,Medium,Recommendation system problem
+Track employee attendance patterns,Data_Technical_Readiness,Low,HR,Simple,Data aggregation and preprocessing
+Automate performance evaluations,Governance_Risk_Operational,High,HR,Complex,Bias and fairness risks
+Recommend products to customers,AI_Solution_Design,Low,Retail,Medium,Recommendation system problem
+Build chatbot for e-commerce support,Data_Technical_Readiness,Medium,Retail,Medium,Requires integration with product data
+Analyze customer reviews sentiment,AI_Solution_Design,Low,Retail,Simple,NLP sentiment analysis
+Detect fake product reviews,AI_Solution_Design,Medium,Retail,Medium,Classification problem
+Use AI for dynamic pricing,Governance_Risk_Operational,Medium,Retail,Complex,Fairness and pricing transparency concerns
+Forecast product demand,AI_Solution_Design,Low,Retail,Medium,Time-series forecasting
+Integrate inventory systems,Data_Technical_Readiness,Medium,Retail,Complex,System integration challenge
+Clean product catalog data,Data_Technical_Readiness,Low,Retail,Simple,Data cleaning task
+Segment customers for marketing,AI_Solution_Design,Low,Retail,Medium,Clustering problem
+Track customer browsing behavior,Governance_Risk_Operational,Medium,Retail,Medium,Privacy concerns
+Optimize delivery routes using AI,AI_Solution_Design,Medium,Operations,Complex,Optimization modeling problem
+Integrate supply chain data systems,Data_Technical_Readiness,Medium,Operations,Complex,Data integration challenge
+Predict equipment failure,AI_Solution_Design,Medium,Operations,Medium,Predictive maintenance modeling
+Monitor worker productivity using sensors,Governance_Risk_Operational,High,Operations,Complex,Privacy and ethical concerns
+Clean logistics data,Data_Technical_Readiness,Low,Operations,Simple,Data preprocessing task
+Forecast supply chain demand,AI_Solution_Design,Low,Operations,Medium,Time-series forecasting
+Automate warehouse operations using AI,AI_Solution_Design,Medium,Operations,Complex,Automation and optimization problem
+Track shipments in real-time,Data_Technical_Readiness,Medium,Operations,Medium,Requires system integration
+Use AI for vendor risk assessment,Governance_Risk_Operational,High,Operations,Complex,Risk and compliance concerns
+Cluster suppliers based on performance,AI_Solution_Design,Low,Operations,Medium,Clustering problem
