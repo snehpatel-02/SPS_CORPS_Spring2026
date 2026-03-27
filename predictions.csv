@@ -1,0 +1,16 @@
+use_case,actual,predicted
+Detect fraudulent transactions,AI_Solution_Design,AI_Solution_Design
+Track customer browsing behavior,Governance_Risk_Operational,AI_Solution_Design
+Recommend products to customers,AI_Solution_Design,AI_Solution_Design
+Forecast supply chain demand,AI_Solution_Design,AI_Solution_Design
+Clean and normalize transaction data,Data_Technical_Readiness,Data_Technical_Readiness
+Use AI for vendor risk assessment,Governance_Risk_Operational,Governance_Risk_Operational
+Predict employee attrition,AI_Solution_Design,AI_Solution_Design
+Clean employee records database,Data_Technical_Readiness,Data_Technical_Readiness
+Analyze customer reviews sentiment,AI_Solution_Design,AI_Solution_Design
+Monitor employee trading activity,Governance_Risk_Operational,Governance_Risk_Operational
+Integrate multiple banking databases,Data_Technical_Readiness,Data_Technical_Readiness
+Integrate EHR and claims data for analytics,Data_Technical_Readiness,Data_Technical_Readiness
+Clean product catalog data,Data_Technical_Readiness,Data_Technical_Readiness
+Detect anomalies in patient vitals data,AI_Solution_Design,AI_Solution_Design
+Analyze patient feedback comments for sentiment,AI_Solution_Design,AI_Solution_Design
