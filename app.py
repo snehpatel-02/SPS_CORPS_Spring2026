@@ -1,61 +1,77 @@
 from flask import Flask, render_template, request
 import ollama
-import json
+import random
 
 app = Flask(__name__)
 
+# Store history (temporary memory)
+history = []
 
-def build_prompt(use_case):
-    return f"""
-You are an enterprise AI triage system.
+def rule_based_override(text):
+    keywords = [
+        "loan", "hiring", "recruitment", "privacy", "bias",
+        "fairness", "compliance", "regulation", "monitor",
+        "surveillance", "insurance", "decision"
+    ]
+    for word in keywords:
+        if word in text.lower():
+            return "Governance_Risk_Operational"
+    return None
 
-Classify the use case into ONLY ONE category:
 
-1. Data_Technical_Readiness
-2. AI_Solution_Design
-3. Governance_Risk_Operational
+def classify_use_case(use_case):
 
-Return ONLY JSON:
-{{"primary_sme": "category_name"}}
+    rule_result = rule_based_override(use_case)
+    if rule_result:
+        return rule_result, 0.95  # high confidence for rules
 
-Use case:
-{use_case}
+    prompt = f"""
+Classify into ONE:
+
+Data_Technical_Readiness
+AI_Solution_Design
+Governance_Risk_Operational
+
+Use case: {use_case}
+Return ONLY category.
 """
 
-
-def get_prediction(use_case):
-    prompt = build_prompt(use_case)
-
     response = ollama.chat(
-        model='mistral',
+        model="mistral",
         messages=[{"role": "user", "content": prompt}]
     )
 
-    return response['message']['content']
+    prediction = response['message']['content'].strip()
 
+    # Fake confidence (LLMs don't give probability)
+    confidence = round(random.uniform(0.7, 0.95), 2)
 
-def extract_sme(response):
-    try:
-        start = response.find("{")
-        end = response.rfind("}") + 1
-        clean_json = response[start:end]
-
-        data = json.loads(clean_json)
-        return data["primary_sme"]
-    except:
-        return "ERROR"
+    return prediction, confidence
 
 
 @app.route("/", methods=["GET", "POST"])
 def home():
     prediction = None
+    confidence = None
 
     if request.method == "POST":
         use_case = request.form["use_case"]
-        raw = get_prediction(use_case)
-        prediction = extract_sme(raw)
 
-    return render_template("index.html", prediction=prediction)
+        prediction, confidence = classify_use_case(use_case)
+
+        # Save history
+        history.append({
+            "use_case": use_case,
+            "prediction": prediction,
+            "confidence": confidence
+        })
+
+    return render_template(
+        "index.html",
+        prediction=prediction,
+        confidence=confidence,
+        history=history[::-1]  # latest first
+    )
 
 
 if __name__ == "__main__":

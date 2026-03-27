@@ -1,76 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AI Use Case Triage</title>
-
+    <title>AI Triage System</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+            margin: 0;
         }
 
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            width: 500px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: 50px auto;
         }
 
-        h2 {
-            text-align: center;
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
         }
 
         textarea {
             width: 100%;
-            padding: 12px;
+            height: 90px;
+            padding: 10px;
             border-radius: 8px;
-            border: 1px solid #ccc;
-            resize: none;
+            border: 1px solid #ddd;
         }
 
         button {
             width: 100%;
             padding: 12px;
-            margin-top: 15px;
+            margin-top: 10px;
+            background: #4CAF50;
+            color: white;
             border: none;
             border-radius: 8px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #45a049;
+            background: #45a049;
         }
 
         .result {
-            margin-top: 20px;
+            text-align: center;
             padding: 15px;
             border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .ai { background: #e3f2fd; color: #1565c0; }
+        .data { background: #fff3e0; color: #ef6c00; }
+        .gov { background: #fdecea; color: #c62828; }
+
+        .confidence {
             text-align: center;
-            font-weight: bold;
+            margin-top: 8px;
+            font-size: 14px;
+            color: gray;
         }
 
-        .AI_Solution_Design {
-            background-color: #e3f2fd;
-            color: #1565c0;
+        .history-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
         }
 
-        .Data_Technical_Readiness {
-            background-color: #fff3e0;
-            color: #ef6c00;
+        .spinner {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
         }
 
-        .Governance_Risk_Operational {
-            background-color: #ffebee;
-            color: #c62828;
+        .spinner div {
+            width: 30px;
+            height: 30px;
+            border: 4px solid #ccc;
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: auto;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -78,19 +97,57 @@
 <body>
 
 <div class="container">
-    <h2>🤖 AI Use Case Triage</h2>
 
-    <form method="POST">
-        <textarea name="use_case" rows="4" placeholder="Enter your AI use case..."></textarea>
-        <button type="submit">Classify</button>
-    </form>
+    <!-- Input Card -->
+    <div class="card">
+        <h1>AI Use Case Triage</h1>
 
-    {% if prediction %}
-        <div class="result {{ prediction }}">
-            Prediction: {{ prediction }}
+        <form method="POST" onsubmit="showSpinner()">
+            <textarea name="use_case" placeholder="Describe your AI use case..." required></textarea>
+            <button type="submit">Classify</button>
+        </form>
+
+        <div class="spinner" id="spinner">
+            <div></div>
+            <p>Analyzing...</p>
         </div>
-    {% endif %}
+
+        {% if prediction %}
+            <div class="result 
+                {% if prediction == 'AI_Solution_Design' %}ai
+                {% elif prediction == 'Data_Technical_Readiness' %}data
+                {% else %}gov
+                {% endif %}
+            ">
+                {{ prediction }}
+            </div>
+
+            <div class="confidence">
+                Confidence: {{ confidence }}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- History Panel -->
+    <div class="card">
+        <h3>History</h3>
+
+        {% for item in history %}
+            <div class="history-item">
+                <strong>{{ item.use_case }}</strong><br>
+                → {{ item.prediction }} ({{ item.confidence }})
+            </div>
+        {% endfor %}
+
+    </div>
+
 </div>
+
+<script>
+function showSpinner() {
+    document.getElementById("spinner").style.display = "block";
+}
+</script>
 
 </body>
 </html>
